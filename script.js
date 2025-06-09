@@ -4,30 +4,47 @@ async function validatePhone() {
   const url = `https://api.apilayer.com/number_verification/validate?number=${phone}`;
 
   try {
-    const response = await fetch(url, {
+    const res = await fetch(url, {
       headers: {
         "apikey": apiKey
       }
     });
+    const data = await res.json();
 
-    const data = await response.json();
-    let resultDiv = document.getElementById("result");
-
-    if (data.valid) {
-      const currentDate = new Date().toLocaleDateString("en-US");
-
-      resultDiv.innerHTML = `
-        <strong>Phone Number:</strong> ${data.international_format || data.number}<br>
-        <strong>Date of this Report:</strong> ${currentDate}<br>
-        <strong>Phone Line Type:</strong> ${data.line_type || "Unknown"}<br>
-        <strong>Phone Company:</strong> ${data.carrier || "Unknown"}<br>
-        <strong>Phone Location:</strong> ${data.location || "Unknown"}
-      `;
-    } else {
-      resultDiv.innerHTML = "❌ Invalid Phone Number";
+    if (!data.valid) {
+      alert("❌ Invalid phone number.");
+      return;
     }
+
+    const infoHTML = `
+      <ul>
+        <li><strong>Phone Number:</strong> (${data.country_code}) ${data.national_format || data.number}</li>
+        <li><strong>Date of this Report:</strong> ${new Date().toLocaleDateString()}</li>
+        <li><strong>Phone Line Type:</strong> ${data.line_type || "Unknown"}</li>
+        <li><strong>Phone Company:</strong> ${data.carrier || "Unknown"}</li>
+        <li><strong>Phone Location:</strong> ${data.location || "Unknown"}</li>
+        <li><strong>Owner's Name & Address:</strong> <a href="#" style="color: green">Click Here</a></li>
+      </ul>
+      <small>Sponsored by PeopleFinders.com</small>
+    `;
+
+    document.getElementById("resultInfo").innerHTML = infoHTML;
+
+    const mapHTML = `<iframe
+      src="https://maps.google.com/maps?q=${encodeURIComponent(data.location || "USA")}&z=10&output=embed"
+      width="300"
+      height="200"
+      loading="lazy"></iframe>`;
+    document.getElementById("mapContainer").innerHTML = mapHTML;
+
+    document.getElementById("outputContainer").classList.remove("hidden");
   } catch (error) {
+    alert("Error fetching phone data.");
     console.error(error);
-    document.getElementById("result").innerHTML = "Error validating phone number.";
   }
+}
+
+function searchAgain() {
+  document.getElementById("phoneInput").value = "";
+  document.getElementById("outputContainer").classList.add("hidden");
 }

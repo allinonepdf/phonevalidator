@@ -1,63 +1,64 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #e0f2ff;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
   margin: 0;
-  padding: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.container {
-  background: #ffffff;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
   text-align: center;
-  animation: fadeIn 1s ease-in-out;
+  padding: 20px;
 }
-
+h1 {
+  font-size: 3em;
+  color: #222;
+}
+h3 {
+  margin: 0 0 20px;
+}
 input {
+  font-size: 2em;
   padding: 10px;
-  width: 280px;
-  margin: 1rem 0;
-  border: 2px solid #0077cc;
-  border-radius: 8px;
+  width: 300px;
+  margin: 10px 0;
 }
-
 button {
+  font-size: 1.2em;
+  background-color: #1e90ff;
+  color: #fff;
   padding: 10px 20px;
-  background-color: #0077cc;
-  color: white;
   border: none;
-  border-radius: 8px;
+  margin-top: 10px;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
-
 button:hover {
-  background-color: #005fa3;
+  background-color: #0072e3;
 }
-
-#result {
-  margin-top: 1rem;
-  font-size: 1.1rem;
+.note {
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+.red {
+  color: red;
+  font-weight: bold;
+}
+.output-container {
+  margin-top: 30px;
+}
+.hidden {
+  display: none;
+}
+.results {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+.info {
   text-align: left;
 }
-
+.map iframe {
+  border: 0;
+  width: 300px;
+  height: 200px;
+}
 footer {
-  margin-top: 2rem;
-  font-size: 1rem;
-  color: #333;
-}
-
-.fade-in {
-  animation: fadeIn 1s ease-in;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  margin-top: 40px;
+  color: #555;
 }

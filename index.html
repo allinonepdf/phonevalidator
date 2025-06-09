@@ -3,15 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Phone Validator</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Free Phone Validation</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="container">
-    <h1 class="fade-in">📱 Phone Number Validator</h1>
-    <input type="text" id="phoneInput" placeholder="Enter phone number (e.g. +1XXXXXXXXXX)" />
-    <button onclick="validatePhone()">Validate</button>
-    <div id="result" class="fade-in"></div>
+  <div class="main">
+    <h1>Free Phone Validation</h1>
+    <h3>IS IT A CELL PHONE OR IS IT A LANDLINE OR IS IT A FAKE?</h3>
+    <input type="text" id="phoneInput" placeholder="555-123-1212"/>
+    <small>(Enter any North American phone number with/without leading “1”.)</small>
+    <p class="note"><strong>VALIDATE PHONE NUMBERS ABOVE FOR FREE TO IDENTIFY PHONE LINE TYPE AND PHONE COMPANY!</strong><br>
+    <span class="red">NEW!</span> NOW INCLUDES OUR FAKE NUMBER CHECK THAT IDENTIFIES INVALID PHONE NUMBERS THAT CANNOT BE CALLED OR TEXTED.</p>
+    <button onclick="validatePhone()">SEARCH</button>
+
+    <div id="outputContainer" class="output-container hidden">
+      <h2>PHONE VALIDATOR FREE RESULTS</h2>
+      <div class="results">
+        <div class="info" id="resultInfo"></div>
+        <div class="map" id="mapContainer"></div>
+      </div>
+      <button onclick="searchAgain()">SEARCH AGAIN</button>
+    </div>
   </div>
   <footer>Vijay Malviya 2025</footer>
   <script src="script.js"></script>
