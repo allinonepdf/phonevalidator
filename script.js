@@ -14,10 +14,14 @@ async function validatePhone() {
     let resultDiv = document.getElementById("result");
 
     if (data.valid) {
+      const currentDate = new Date().toLocaleDateString("en-US");
+
       resultDiv.innerHTML = `
-        ✅ Valid Number<br>
-        Country: ${data.country_name}<br>
-        Line Type: ${data.line_type}
+        <strong>Phone Number:</strong> ${data.international_format || data.number}<br>
+        <strong>Date of this Report:</strong> ${currentDate}<br>
+        <strong>Phone Line Type:</strong> ${data.line_type || "Unknown"}<br>
+        <strong>Phone Company:</strong> ${data.carrier || "Unknown"}<br>
+        <strong>Phone Location:</strong> ${data.location || "Unknown"}
       `;
     } else {
       resultDiv.innerHTML = "❌ Invalid Phone Number";
