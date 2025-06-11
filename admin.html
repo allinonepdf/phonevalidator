@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Admin Logs</title></head>
+<body style="background:#000;color:#0f0;font-family:monospace;padding:20px;">
+    <h1>🗃️ Admin Logs</h1>
+    {% for filename, lines in logs.items() %}
+        <h3>{{ filename }}</h3>
+        <pre>{{ lines|join('') }}</pre>
+    {% endfor %}
+</body>
+</html>
+<footer style="margin-top:50px;color:#ccc;">&copy; Vijay Malviya 2025</footer>
